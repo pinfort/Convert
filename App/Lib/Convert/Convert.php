@@ -1,6 +1,8 @@
 <?php
 
-namespace Lib\Convert;
+namespace App\Lib\Convert;
+
+use Exception;
 
 /**
 * integer style convert Library
@@ -79,6 +81,17 @@ class Convert
     function __construct($length = null)
     {
         $this->length = $length;
+    }
+
+    public function Base64ChangeLastTwoCharacter($six_three=null, $six_four=null)
+    {
+        if (!is_null($six_three)) {
+            $this->base64_encode_table['111110'] = $six_three;
+        }
+
+        if (!is_null($six_four)) {
+            $this->base64_encode_table['111111'] = $six_four;
+        }
     }
 
     public function Binarystring($bin_str = null)
